@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 
 import {
@@ -16,17 +15,9 @@ import {
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { SignUp } from "./src/screens/sign-up";
+import { Login } from "./src/screens/login";
 
 const Stack = createNativeStackNavigator();
-
-const Home = () => {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start asd on you app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-};
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -49,7 +40,8 @@ export default function App() {
           headerShown: false,
         }}
       >
-        <Stack.Screen name="Home" component={SignUp} />
+        <Stack.Screen name="Home" component={Login} />
+        <Stack.Screen name="SignUp" component={SignUp} />
       </Stack.Navigator>
     </NavigationContainer>
   );
