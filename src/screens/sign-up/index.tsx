@@ -6,9 +6,11 @@ import { Title } from "./title";
 export function SignUp() {
   return (
     <SafeAreaView>
-      <Logo fontSize={36} />
-      <Title />
-      <SignUpForm />
+      <View style={{ marginTop: "5%" }}>
+        <Logo fontSize={36} />
+        <Title />
+        <SignUpForm />
+      </View>
     </SafeAreaView>
   );
 }

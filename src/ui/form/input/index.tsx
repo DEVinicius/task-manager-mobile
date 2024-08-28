@@ -5,6 +5,7 @@ import {
 } from "react-native";
 
 import { inputStyle } from "./style";
+import { PRIMARY_COLOR } from "../../../config/colors";
 
 interface FormFields {
   placeHolder: string;
@@ -25,7 +26,7 @@ export function FormInput({
     <TextInput
       style={inputStyle.input}
       placeholder={placeHolder}
-      placeholderTextColor={"#BA7149"}
+      placeholderTextColor={PRIMARY_COLOR}
       onBlur={onBlur}
       onChangeText={onChange}
       secureTextEntry={isSecureEntry}

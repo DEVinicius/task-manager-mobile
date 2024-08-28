@@ -1,8 +1,9 @@
 import { StyleSheet } from "react-native";
+import { PRIMARY_COLOR } from "../../config/colors";
 
 export const ButtonStyle = StyleSheet.create({
   view: {
-    backgroundColor: "#BA7149",
+    backgroundColor: PRIMARY_COLOR,
     height: 40,
     borderRadius: 5,
     marginTop: "5%",
