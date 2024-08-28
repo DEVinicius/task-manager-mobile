@@ -1,8 +1,8 @@
 import { SafeAreaView, View } from "react-native";
 import { Logo } from "../../ui/logo";
-import { Title } from "./title";
-import { LoginForm } from "./form";
-import { SingUpLink } from "./sign-up-link";
+import { Title } from "./components/title";
+import { LoginForm } from "./components/form";
+import { SingUpLink } from "./components/sign-up-link";
 import { LoginStyle } from "./style";
 
 export function Login() {
@@ -13,7 +13,7 @@ export function Login() {
         <Title />
         <LoginForm />
       </View>
-      <SingUpLink />
+      <SingUpLink /> 
     </SafeAreaView>
   );
 }
