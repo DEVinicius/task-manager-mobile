@@ -1,5 +1,5 @@
 import { Text, TouchableOpacity, View } from "react-native";
-import { Button } from "../../../ui/button";
+import { Button } from "../../../../ui/button";
 
 export function SingUpLink() {
   return (

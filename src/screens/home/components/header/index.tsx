@@ -1,6 +1,6 @@
 import { Text, View } from "react-native";
-import { PRIMARY_COLOR } from "../../../config/colors";
-import { Logo } from "../../../ui/logo";
+import { PRIMARY_COLOR } from "../../../../config/colors";
+import { Logo } from "../../../../ui/logo";
 import { Menu } from "./menu";
 
 export function Header() {
