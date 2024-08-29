@@ -3,8 +3,7 @@ import { Task } from "./task";
 
 export function TaskStatus() {
   return (
-    <View>
-      <Text>TESTE</Text>
+    <View style={{marginVertical: 40}}>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         <Task />
         <Task />

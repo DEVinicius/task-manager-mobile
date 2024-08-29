@@ -4,8 +4,8 @@ import { PRIMARY_COLOR } from "../../../../../config/colors";
 export const TaskStyle = StyleSheet.create({
   body: {
     backgroundColor: PRIMARY_COLOR,
-    marginHorizontal: 5,
-    minWidth: 200,
+    marginRight: 25,
+    minWidth: 250,
     padding: 10,
     borderRadius: 8,
   },

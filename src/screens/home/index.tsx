@@ -1,6 +1,7 @@
 import { SafeAreaView, ScrollView, Text } from "react-native";
 import { Header } from "./components/header";
 import { TaskStatus } from "./components/task-status";
+import { Greeting } from "./components/greeting";
 
 export function Home() {
   return (
@@ -9,9 +10,11 @@ export function Home() {
       <ScrollView
         style={{
           position: "relative",
-          height: '100%'
+          height: "100%",
+          marginLeft: 15
         }}
       >
+        <Greeting />
         <TaskStatus />
       </ScrollView>
     </SafeAreaView>
