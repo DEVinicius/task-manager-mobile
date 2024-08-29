@@ -11,10 +11,10 @@ export function Home() {
         style={{
           position: "relative",
           height: "100%",
-          marginLeft: 15
+          marginLeft: 15,
         }}
       >
-        <Greeting />
+        <Greeting name="Vinícius" />
         <TaskStatus />
       </ScrollView>
     </SafeAreaView>
