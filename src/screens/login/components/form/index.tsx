@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { View } from "react-native";
-import { FormField } from "../../../ui/form/field";
-import { Button } from "../../../ui/button";
+import { FormField } from "../../../../ui/form/field";
+import { Button } from "../../../../ui/button";
 import { validateForm } from "./functions";
 
 export interface FormFields {

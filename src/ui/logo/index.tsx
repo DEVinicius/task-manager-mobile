@@ -2,9 +2,10 @@ import { Text, View } from "react-native";
 
 interface Logo {
   fontSize: number;
+  color?: string
 }
 
-export function Logo({ fontSize }: Logo) {
+export function Logo({ fontSize, color = 'black' }: Logo) {
   return (
     <View
       style={{
@@ -15,6 +16,7 @@ export function Logo({ fontSize }: Logo) {
       <Text
         style={{
           fontSize,
+          color,
           fontFamily: "Inter_600SemiBold",
         }}
       >
