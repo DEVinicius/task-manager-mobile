@@ -1,7 +1,8 @@
 import { useForm } from "react-hook-form";
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import { FormField } from "../../../ui/form/field";
 import { Button } from "../../../ui/button";
+import { CreateTaskFormStyle } from "./style";
 
 interface FormFields {
   name: string;
@@ -21,18 +22,11 @@ export function CreateTaskForm() {
       motivationToExecute: "",
     },
   });
-  
-  const onSubmit = (data: FormFields) => {
-  };
+
+  const onSubmit = (data: FormFields) => {};
 
   return (
-    <View
-      style={{
-        marginTop: "15%",
-        paddingHorizontal: "5%",
-        alignItems: "center",
-      }}
-    >
+    <View style={CreateTaskFormStyle.view}>
       <FormField<FormFields>
         control={control}
         name="name"
