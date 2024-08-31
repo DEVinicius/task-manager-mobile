@@ -3,19 +3,23 @@ import { Text, View } from "react-native";
 import { FormInput } from "../input";
 import { FieldStyle } from "./style";
 
+interface FormFieldProps<T extends FieldValues> {
+  control: Control<T>;
+  name: Path<T>;
+  label: string;
+  type?: string;
+  isSecureTextEntry?: boolean;
+  hasError: boolean;
+}
+
 export function FormField<T extends FieldValues>({
   control,
   name,
   label,
   hasError,
+  type = 'text',
   isSecureTextEntry = false,
-}: {
-  control: Control<T>;
-  name: Path<T>;
-  label: string;
-  isSecureTextEntry?: boolean;
-  hasError: boolean;
-}) {
+}: FormFieldProps<T>) {
   return (
     <Controller
       control={control}
@@ -29,11 +33,14 @@ export function FormField<T extends FieldValues>({
             placeHolder="Digite aqui"
             onBlur={onBlur}
             onChange={onChange}
+            type={type}
             isSecureEntry={isSecureTextEntry}
             //@ts-ignore
             value={value}
           />
-          {hasError && <Text style= {{color: 'red'}}>{label} é obrigatório.</Text>}
+          {hasError && (
+            <Text style={{ color: "red" }}>{label} é obrigatório.</Text>
+          )}
         </View>
       )}
       name={name}

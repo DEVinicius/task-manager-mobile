@@ -17,6 +17,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { SignUp } from "./src/screens/sign-up";
 import { Login } from "./src/screens/login";
 import { Home } from "./src/screens/home";
+import { CreateTask } from "./src/screens/create-task";
+import { MyTasks } from "./src/screens/my-tasks";
 
 const Stack = createNativeStackNavigator();
 
@@ -36,12 +38,14 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Home"
+        initialRouteName="MyTasks"
         screenOptions={{
           headerShown: false,
         }}
       >
         <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="MyTasks" component={MyTasks} />
+        <Stack.Screen name="CreateTask" component={CreateTask} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="SignUp" component={SignUp} />
       </Stack.Navigator>

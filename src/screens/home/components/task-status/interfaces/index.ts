@@ -1,4 +1,5 @@
 export interface TaskProps {
+  id?: number;
   typeRecurrency: string;
   task: {
     name: string;

@@ -5,17 +5,18 @@ import { TaskProps } from "./interfaces";
 export function TaskStatus() {
   const tasks: Array<TaskProps> = [
     {
+      id: 1,
       typeRecurrency: "Agosto",
       task: {
         name: "Ler a Bíblia",
         times: {
-          completed: 3,
-          total: 10,
+          completed: 45,
+          total: 80,
         },
       },
     },
-
     {
+      id: 2,
       typeRecurrency: "Agosto",
       task: {
         name: "Treinar",
@@ -26,6 +27,7 @@ export function TaskStatus() {
       },
     },
     {
+      id: 3,
       typeRecurrency: "Anual",
       task: {
         name: "Escrever Artigo",
@@ -41,7 +43,11 @@ export function TaskStatus() {
     <View style={{ marginVertical: 40 }}>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         {tasks.map((task) => (
-          <Task typeRecurrency={task.typeRecurrency} task={task.task} />
+          <Task
+            typeRecurrency={task.typeRecurrency}
+            key={task.id}
+            task={task.task}
+          />
         ))}
       </ScrollView>
     </View>
