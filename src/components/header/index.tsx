@@ -1,19 +1,11 @@
-import { Text, View } from "react-native";
-import { PRIMARY_COLOR } from "../../config/colors";
+import { View } from "react-native";
 import { Logo } from "../../ui/logo";
 import { Menu } from "./menu";
+import { HeaderStyle } from "./style";
 
 export function Header() {
   return (
-    <View
-      style={{
-        backgroundColor: PRIMARY_COLOR,
-        flexDirection: "row",
-        justifyContent: "space-between",
-        paddingHorizontal: "5%",
-        paddingVertical: "6%",
-      }}
-    >
+    <View style={HeaderStyle.view}>
       <Menu />
       <Logo fontSize={28} color="white" />
     </View>
