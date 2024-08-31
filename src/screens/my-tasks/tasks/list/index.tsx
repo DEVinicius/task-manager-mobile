@@ -19,10 +19,10 @@ export function TaskList({ tasks }: TaskListProps) {
       {tasks.map((task) => (
         <Card key={task.id} backgroundColor={PRIMARY_COLOR}>
           <View style={{ maxWidth: "80%" }}>
-            <Text style={{ fontSize: 20 }}> {reduceWord(task.name, 20)}</Text>
+            <Text style={{ fontSize: 20, color: 'white', fontFamily: 'Inter_600SemiBold' }}> {reduceWord(task.name, 20)}</Text>
           </View>
           <View>
-            <Text>
+            <Text style={{color: 'white'}}>
               {task.timesCompleted} / {task.target}
             </Text>
           </View>

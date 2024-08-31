@@ -1,11 +1,15 @@
-import { Text, View } from "react-native";
+import { TouchableOpacity } from "react-native";
 //@ts-ignore
 import HamburgerMenu from "../../../assets/hamburger-white.svg";
 
-export function Menu() {
+interface MenuProps {
+  onPress: () => void;
+}
+
+export function Menu({ onPress }: MenuProps) {
   return (
-    <View>
+    <TouchableOpacity onPress={onPress}>
       <HamburgerMenu width={40} height={40} />
-    </View>
+    </TouchableOpacity>
   );
 }
