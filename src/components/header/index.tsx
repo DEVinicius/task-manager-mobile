@@ -1,4 +1,4 @@
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import { Logo } from "../../ui/logo";
 import { Menu } from "./menu";
 import { HeaderStyle } from "./style";
@@ -35,7 +35,7 @@ export function Header() {
         <Close onPress={handlePressMenu} />
         <Logo fontSize={28} color="white" />
       </View>
-      <Links />
+      <Links handleCloseMenu={handlePressMenu} />
     </View>
   );
 }

@@ -2,13 +2,17 @@ import { SafeAreaView, Text } from "react-native";
 import { Header } from "../../components/header";
 import { CreateTaskForm as Form } from "./form";
 import { Title } from "../../components/title";
+import { NavigationContextProvider } from "../../context/navigation.context";
 
-export function CreateTask() {
+//@ts-ignore
+export function CreateTask({ navigation }) {
   return (
-    <SafeAreaView>
-      <Header />
-      <Title text="Criar nova Tarefa" />
-      <Form />
-    </SafeAreaView>
+    <NavigationContextProvider navigation={navigation}>
+      <SafeAreaView>
+        <Header />
+        <Title text="Criar nova Tarefa" />
+        <Form />
+      </SafeAreaView>
+    </NavigationContextProvider>
   );
 }

@@ -3,6 +3,7 @@ import { Text, View } from "react-native";
 import { FormField } from "../../../../ui/form/field";
 import { Button } from "../../../../ui/button";
 import { validateForm } from "./functions";
+import { useNavigation } from "../../../../hooks/use-navigation";
 
 export interface FormFields {
   name: string;
@@ -25,8 +26,12 @@ export function SignUpForm() {
     },
   });
 
+  const { navigation } = useNavigation();
+
   const onSubmit = (data: FormFields) => {
     validateForm(data);
+
+    navigation.navigate("Login");
   };
 
   return (

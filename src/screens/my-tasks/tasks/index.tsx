@@ -23,6 +23,12 @@ export function Tasks() {
       target: 200,
       timesCompleted: 12,
     },
+    {
+      id: 4,
+      name: "Desenhar um caderno em uma garrafa ADFAIPFHIOQEBFIOBEWIFBWEIFBIWOEBFIWEBFIOWEBFIEW FIWEBFIOW WIEFBI WBFIOWEFB WOEIFB IWOEFB WEOFIB OWEIFBWOEI BFOIEWB OEId",
+      target: 200,
+      timesCompleted: 12,
+    },
   ];
 
   return (
