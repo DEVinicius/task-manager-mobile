@@ -4,16 +4,20 @@ import { Title } from "./components/title";
 import { LoginForm } from "./components/form";
 import { SingUpLink } from "./components/sign-up-link";
 import { LoginStyle } from "./style";
+import { NavigationContextProvider } from "../../context/navigation.context";
 
-export function Login() {
+//@ts-ignore
+export function Login({ navigation }) {
   return (
-    <SafeAreaView style={LoginStyle.safeAreaView}>
-      <View>
-        <Logo fontSize={36} />
-        <Title />
-        <LoginForm />
-      </View>
-      <SingUpLink /> 
-    </SafeAreaView>
+    <NavigationContextProvider navigation={navigation}>
+      <SafeAreaView style={LoginStyle.safeAreaView}>
+        <View>
+          <Logo fontSize={36} />
+          <Title />
+          <LoginForm />
+        </View>
+        <SingUpLink />
+      </SafeAreaView>
+    </NavigationContextProvider>
   );
 }

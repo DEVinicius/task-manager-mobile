@@ -2,13 +2,17 @@ import { SafeAreaView, View } from "react-native";
 import { Header } from "../../components/header";
 import { TaskCreator } from "../../components/task-creator";
 import { Tasks } from "./tasks";
+import { NavigationContextProvider } from "../../context/navigation.context";
 
-export function MyTasks() {
+//@ts-ignore
+export function MyTasks({ navigation }) {
   return (
-    <SafeAreaView>
-      <Header />
-      <Tasks />
-      <TaskCreator />
-    </SafeAreaView>
+    <NavigationContextProvider navigation={navigation}>
+      <SafeAreaView>
+        <Header />
+        <Tasks />
+        <TaskCreator />
+      </SafeAreaView>
+    </NavigationContextProvider>
   );
 }

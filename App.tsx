@@ -38,7 +38,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="MyTasks"
+        initialRouteName="SignUp"
         screenOptions={{
           headerShown: false,
         }}
