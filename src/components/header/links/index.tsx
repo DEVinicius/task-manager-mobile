@@ -59,6 +59,31 @@ export function Links({ handleCloseMenu }: LinksProps) {
           Metas
         </Text>
       </TouchableOpacity>
+
+      <TouchableOpacity
+        style={{
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+        onPress={() => {
+          //ROTEAMENTO
+          handleCloseMenu();
+          navigation.navigate("Login");
+        }}
+      >
+        <TargetIcon />
+        <Text
+          style={{
+            fontFamily: "Inter_500Medium",
+            fontSize: 22,
+            color: "white",
+            marginLeft: "8%",
+          }}
+        >
+          Sair
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 }

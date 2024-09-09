@@ -1,8 +1,24 @@
 import { ScrollView, Text, View } from "react-native";
 import { Task } from "./task";
 import { TaskProps } from "./interfaces";
+import { useEffect } from "react";
+import { useAuth } from "../../../../hooks/use-auth";
+import { TASK_API } from "../../../../config/task-api";
 
 export function TaskStatus() {
+  const { accessToken } = useAuth();
+  async function searchTasks() {
+    const tasks = await TASK_API.get("/task", {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+
+    console.log(tasks.data)
+  }
+  useEffect(() => {
+    searchTasks()
+  }, []);
   const tasks: Array<TaskProps> = [
     {
       id: 1,

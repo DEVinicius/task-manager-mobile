@@ -14,13 +14,10 @@ import {
 } from "@expo-google-fonts/inter";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { SignUp } from "./src/screens/sign-up";
-import { Login } from "./src/screens/login";
-import { Home } from "./src/screens/home";
-import { CreateTask } from "./src/screens/create-task";
-import { MyTasks } from "./src/screens/my-tasks";
-
-const Stack = createNativeStackNavigator();
+import { Routes } from "./src/routes";
+import { useEffect } from "react";
+import { getItem } from "./src/config/storage";
+import { AuthContextProvider } from "./src/context/auth.context";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -36,29 +33,10 @@ export default function App() {
   });
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="SignUp"
-        screenOptions={{
-          headerShown: false,
-        }}
-      >
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="MyTasks" component={MyTasks} />
-        <Stack.Screen name="CreateTask" component={CreateTask} />
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="SignUp" component={SignUp} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <AuthContextProvider accessToken={null}>
+      <NavigationContainer>
+        <Routes />
+      </NavigationContainer>
+    </AuthContextProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    fontFamily: "Inter_600SemiBold",
-    backgroundColor: "#F8F8FF",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

@@ -5,9 +5,12 @@ import { Greeting } from "./components/greeting";
 import { PendingIssues } from "./components/pending-issues";
 import { TaskCreator } from "../../components/task-creator";
 import { NavigationContextProvider } from "../../context/navigation.context";
+import { useEffect } from "react";
+import { useAuth } from "../../hooks/use-auth";
 
 //@ts-ignore
 export function Home({ navigation }) {
+  const { accessToken } = useAuth();
   return (
     <NavigationContextProvider navigation={navigation}>
       <SafeAreaView>

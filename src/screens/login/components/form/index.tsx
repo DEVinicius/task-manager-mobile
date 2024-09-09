@@ -4,6 +4,9 @@ import { FormField } from "../../../../ui/form/field";
 import { Button } from "../../../../ui/button";
 import { validateForm } from "./functions";
 import { useNavigation } from "../../../../hooks/use-navigation";
+import { TASK_API } from "../../../../config/task-api";
+import { setItem } from "../../../../config/storage";
+import { useAuth } from "../../../../hooks/use-auth";
 
 export interface FormFields {
   email: string;
@@ -22,18 +25,28 @@ export function LoginForm() {
     },
   });
 
-  const { navigation } = useNavigation()
+  const { navigation } = useNavigation();
+  const { handleChangeAccessToken } = useAuth();
 
-  const onSubmit = (data: FormFields) => {
-    validateForm(data);
+  const onSubmit = async (data: FormFields) => {
+    try {
+      data.email = data.email.toLowerCase();
 
-    navigation.navigate('Home')
+      const login = await TASK_API.post("/user/auth", data);
+      console.log(login.data);
+
+      handleChangeAccessToken(login.data.access_token);
+
+      // navigation.navigate("Home");
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
     <View
       style={{
-        marginTop:'15%',
+        marginTop: "15%",
         paddingHorizontal: "10%",
         alignItems: "center",
       }}
@@ -48,7 +61,7 @@ export function LoginForm() {
       <FormField<FormFields>
         control={control}
         name="password"
-        label="Senha" 
+        label="Senha"
         hasError={!!errors.password}
         isSecureTextEntry={true}
       />
