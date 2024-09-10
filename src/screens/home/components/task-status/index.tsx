@@ -2,8 +2,7 @@ import { ScrollView, Text, View } from "react-native";
 import { Task } from "./task";
 import { TaskProps } from "./interfaces";
 import { useEffect, useState } from "react";
-import { useAuth } from "../../../../hooks/use-auth";
-import { TASK_API } from "../../../../config/task-api";
+import { useTasks } from "../../../../hooks/use-tasks";
 
 interface TaskResponse {
   description: string;
@@ -36,28 +35,27 @@ function adaptAPIResponseToModel(data: TaskResponse): TaskProps {
 }
 
 export function TaskStatus() {
-  const { accessToken } = useAuth();
+  const { tasks, searchTasks } = useTasks();
 
-  const [tasks, setTasks] = useState<TaskProps[]>([]);
+  const [taskStatus, setTaskStatus] = useState<TaskProps[]>([]);
 
-  async function searchTasks() {
-    const tasks = await TASK_API.get<TaskResponse[]>("/task", {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    });
-
-    setTasks(tasks.data.map((task) => adaptAPIResponseToModel(task)));
+  async function populateTasks() {
+    await searchTasks();
   }
 
   useEffect(() => {
-    searchTasks();
+    console.log('ATUALIZACAO TASK ESTADO')
+    setTaskStatus(tasks.map((task) => adaptAPIResponseToModel(task)));
+  }, [tasks]);
+
+  useEffect(() => {
+    populateTasks();
   }, []);
 
   return (
     <View style={{ marginVertical: 40 }}>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-        {tasks.map((task) => (
+        {taskStatus.map((task) => (
           <Task
             typeRecurrency={task.typeRecurrency}
             key={task.id}

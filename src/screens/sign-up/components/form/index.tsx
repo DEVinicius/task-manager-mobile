@@ -34,9 +34,7 @@ export function SignUpForm() {
     try {
       data.email = data.email.toLowerCase();
 
-      console.log(data);
       const user = await TASK_API.post("/user", data);
-      console.log(user.data);
       navigation.navigate("Login");
     } catch (error: any) {
       console.error(error);

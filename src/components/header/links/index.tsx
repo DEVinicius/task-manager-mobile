@@ -1,6 +1,9 @@
 import { Text, TouchableOpacity, View } from "react-native";
 import TargetIcon from "../../../assets/target.svg";
+import Home from "../../../assets/home.svg";
+import Logout from "../../../assets/sair.svg";
 import { useNavigation } from "../../../hooks/use-navigation";
+import { useAuth } from "../../../hooks/use-auth";
 
 interface LinksProps {
   handleCloseMenu: () => void;
@@ -8,13 +11,15 @@ interface LinksProps {
 
 export function Links({ handleCloseMenu }: LinksProps) {
   const { navigation } = useNavigation();
+  const { handleChangeAccessToken } = useAuth();
   return (
-    <View style={{ marginTop: "15%" }}>
+    <View style={{ marginTop: "15%", alignItems: "center" }}>
       <TouchableOpacity
         style={{
           flexDirection: "row",
           justifyContent: "center",
           alignItems: "center",
+          marginBottom: 10
         }}
         onPress={() => {
           //ROTEAMENTO
@@ -22,7 +27,7 @@ export function Links({ handleCloseMenu }: LinksProps) {
           navigation.navigate("Home");
         }}
       >
-        <TargetIcon />
+        <Home />
         <Text
           style={{
             fontFamily: "Inter_500Medium",
@@ -39,6 +44,7 @@ export function Links({ handleCloseMenu }: LinksProps) {
         style={{
           flexDirection: "row",
           justifyContent: "center",
+          marginBottom: 10,
           alignItems: "center",
         }}
         onPress={() => {
@@ -63,16 +69,17 @@ export function Links({ handleCloseMenu }: LinksProps) {
       <TouchableOpacity
         style={{
           flexDirection: "row",
+          marginBottom: 10,
           justifyContent: "center",
           alignItems: "center",
         }}
         onPress={() => {
           //ROTEAMENTO
           handleCloseMenu();
-          navigation.navigate("Login");
+          handleChangeAccessToken(null);
         }}
       >
-        <TargetIcon />
+        <Logout />
         <Text
           style={{
             fontFamily: "Inter_500Medium",

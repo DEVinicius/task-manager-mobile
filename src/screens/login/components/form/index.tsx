@@ -33,7 +33,6 @@ export function LoginForm() {
       data.email = data.email.toLowerCase();
 
       const login = await TASK_API.post("/user/auth", data);
-      console.log(login.data);
 
       handleChangeAccessToken(login.data.access_token);
 
