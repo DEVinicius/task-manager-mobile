@@ -4,6 +4,8 @@ import { FormField } from "../../../../ui/form/field";
 import { Button } from "../../../../ui/button";
 import { validateForm } from "./functions";
 import { useNavigation } from "../../../../hooks/use-navigation";
+import { TASK_API } from "../../../../config/task-api";
+import { AxiosError } from "axios";
 
 export interface FormFields {
   name: string;
@@ -28,10 +30,15 @@ export function SignUpForm() {
 
   const { navigation } = useNavigation();
 
-  const onSubmit = (data: FormFields) => {
-    validateForm(data);
+  const onSubmit = async (data: FormFields) => {
+    try {
+      data.email = data.email.toLowerCase();
 
-    navigation.navigate("Login");
+      const user = await TASK_API.post("/user", data);
+      navigation.navigate("Login");
+    } catch (error: any) {
+      console.error(error);
+    }
   };
 
   return (

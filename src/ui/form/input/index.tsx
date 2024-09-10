@@ -44,6 +44,7 @@ export function FormInput({
       onChangeText={onChange}
       keyboardType={getKeyBoardType(type)}
       secureTextEntry={isSecureEntry}
+      textContentType="none"
       //@ts-ignore
       value={value}
     />

@@ -3,6 +3,10 @@ import { View } from "react-native";
 import { FormField } from "../../../ui/form/field";
 import { Button } from "../../../ui/button";
 import { CreateTaskFormStyle } from "./style";
+import { TASK_API } from "../../../config/task-api";
+import { useAuth } from "../../../hooks/use-auth";
+import { useNavigation } from "../../../hooks/use-navigation";
+import { useTasks } from "../../../hooks/use-tasks";
 
 interface FormFields {
   name: string;
@@ -23,7 +27,33 @@ export function CreateTaskForm() {
     },
   });
 
-  const onSubmit = (data: FormFields) => {};
+  const { accessToken } = useAuth();
+  const { navigation } = useNavigation();
+  const { searchTasks, searchTaskLogs } = useTasks();
+
+  const onSubmit = async (data: FormFields) => {
+    try {
+      await TASK_API.post(
+        "/task",
+        {
+          name: data.name,
+          description: data.motivationToExecute,
+          timesToComplete: Number(data.timesToComplete),
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
+
+      await Promise.all([await searchTaskLogs(), await searchTasks()]);
+      navigation.push("Home");
+    } catch (error) {
+      console.log(JSON.stringify(error));
+      console.error(error);
+    }
+  };
 
   return (
     <View style={CreateTaskFormStyle.view}>
